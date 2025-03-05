@@ -16,15 +16,19 @@ And then add this pre-commit hook (under `.git/hooks/pre-commit`):
 ```sh
 #!/bin/bash
 
-set -eo pipefail
-
-git diff --exit-code deploy-codedeploy/index.ts
+git diff --exit-code --staged -- deploy-codedeploy/index.ts
 dcd_exit=$?
 
-git diff --exit-code parse-cdk/index.ts
+git diff --exit-code --staged -- parse-cdk/index.ts
 pcdk_exit=$?
 
-if [[ $dcd_exit -eq 1 || $pcdk_exit -eq 1 ]]; then
+git diff --exit-code --staged -- dist/
+dist_exit=$?
+
+if [[ $dcd_exit -eq 1 || $pcdk_exit -eq 1 ]] && [[ dist_exit -eq 0 ]]; then
     npm run roll
+    echo "You forgot to run npm run roll, go stage the dist/ folder and commit again."
+    exit 1
 fi
+
 ```
