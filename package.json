@@ -1,0 +1,28 @@
+{
+  "name": "chaeri-actions",
+  "version": "0.1.0",
+  "description": "GitHub Actions for mercurialworld's specific needs.",
+  "license": "MIT",
+  "author": "mercurialworld",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "roll": "npx rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^6.0.0",
+    "@aws-sdk/client-codedeploy": "^3.758.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "prettier": "^3.5.3",
+    "rollup": "^4.34.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
