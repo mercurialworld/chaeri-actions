@@ -6,6 +6,7 @@ import {
     CodeDeployClient,
     CreateDeploymentCommand,
     CreateDeploymentCommandInput,
+    RevisionLocationType,
 } from "@aws-sdk/client-codedeploy";
 
 async function run() {
@@ -36,6 +37,7 @@ async function run() {
             applicationName: application,
             deploymentGroupName: deploymentGroup,
             revision: {
+                revisionType: RevisionLocationType.S3,
                 s3Location: {
                     bucket: s3Bucket,
                     key: s3Key,
