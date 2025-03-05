@@ -38421,6 +38421,12 @@ class ArnNotSupportedException extends CodeDeployServiceException {
         Object.setPrototypeOf(this, ArnNotSupportedException.prototype);
     }
 }
+const RevisionLocationType = {
+    AppSpecContent: "AppSpecContent",
+    GitHub: "GitHub",
+    S3: "S3",
+    String: "String",
+};
 const BundleType = {
     JSON: "JSON",
     Tar: "tar",
@@ -41013,6 +41019,7 @@ function sharedHeaders(operation) {
             applicationName: application,
             deploymentGroupName: deploymentGroup,
             revision: {
+                revisionType: RevisionLocationType.S3,
                 s3Location: {
                     bucket: s3Bucket,
                     key: s3Key,
