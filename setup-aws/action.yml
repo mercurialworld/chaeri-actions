@@ -31,7 +31,7 @@ runs:
         echo "role=${role}" >> "$GITHUB_OUTPUT"
     
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v4
+      uses: aws-actions/configure-aws-credentials@v6
       with:
         aws-region: ${{ inputs.aws-region }}
         role-to-assume: ${{ steps.resolve-role.outputs.role }}
