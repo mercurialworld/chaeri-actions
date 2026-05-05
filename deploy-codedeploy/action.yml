@@ -27,6 +27,6 @@ outputs:
     value: ${{ steps.create-deployment.outputs.deployment-url }}
 
 runs:
-  using: node20
+  using: node24
   main: ../dist/deploy-codedeploy/index.js
 
